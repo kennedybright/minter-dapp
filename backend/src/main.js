@@ -109,7 +109,7 @@ const layersSetup = (layersOrder) => {
 
 const saveImage = (_editionCount) => {
   fs.writeFileSync(
-    `${buildDir}/images/${_editionCount}.png`,
+    `${buildDir}/images/${namePrefix}${_editionCount}.png`,
     canvas.toBuffer("image/png")
   );
 };
@@ -136,7 +136,6 @@ const addMetadata = (_dna, _edition) => {
     edition: _edition,
     ...extraMetadata,
     date: dateTime,
-    compiler: "HashLips Art Engine - codeSTACKr Modified",
   };
   if (network == NETWORK.sol) {
     tempMetadata = {
@@ -308,7 +307,7 @@ const saveMetaDataSingleFile = (_editionCount) => {
       )
     : null;
   fs.writeFileSync(
-    `${buildDir}/json/${_editionCount}.json`,
+    `${buildDir}/json/${namePrefix}${_editionCount}.json`,
     JSON.stringify(metadata, null, 2)
   );
 };
